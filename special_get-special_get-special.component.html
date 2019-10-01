@@ -1,0 +1,89 @@
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+        <button class="btn btn-success" (click)="getNavigation('create', '')">Add Special</button>
+        </div>
+    </div>
+    <br> -->
+    <div class="row">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Name, Area and Spot">
+        </mat-form-field>
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="Id">
+                <mat-header-cell *matHeaderCellDef> Sr. No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Id}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="Area">
+                <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Area}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="Contact1">
+                <mat-header-cell *matHeaderCellDef> Primary Cont. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Contact1}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Attendance">
+                <mat-header-cell *matHeaderCellDef> Attendance </mat-header-cell>
+                <mat-cell *matCellDef="let element; let index = index"> 
+                    <mat-slide-toggle color="primary"
+                        [checked]="element.Attendance === 'P' ? true : false"
+                        (change)="setAttendance(index, $event)">
+                    </mat-slide-toggle>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="SewaLocation">
+                <mat-header-cell *matHeaderCellDef> Spot </mat-header-cell>
+                <mat-cell *matCellDef="let element; let index = index"> 
+                    <mat-form-field>
+                        <mat-select [(value)]="element.SewaLocation">
+                            <mat-option *ngFor="let spot of spotList" [value]="spot.Name">{{spot.Name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--<span (click)="showSewaLocation($event)" id="test{{index}}" [ngClass]="{'hidesewalocation': isShowSewaLocation, 'showsewalocation': !isShowSewaLocation}">{{element.SewaLocation}}</span>
+                    <mat-form-field class="example-full-width" id="autotest" [ngClass]="{'hidesewalocation': !isShowSewaLocation, 'showsewalocation': isShowSewaLocation}">
+                        <input type="text" aria-label="Number" matInput [formControl]="sewaSpot" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='setSewaLocation(index, $event.option.value)'>
+                            <mat-option *ngFor="let spot of spotList" [value]="spot.Name">
+                                {{spot.Name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>-->
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                    <button mat-icon-button color="primary" (click)="editSpecial(-1,{})">
+                        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                    </button>
+                </mat-header-cell>
+            
+                <mat-cell *matCellDef="let row; let i=index;">
+                    <button mat-icon-button color="primary" (click)="editSpecial(i, row)">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+            
+                    <button mat-icon-button color="primary" (click)="deleteSpecial(i, row)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+            
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="mat-paginator-width" showFirstLastButtons></mat-paginator>
+        <div>
+            <button class="btn btn-primary" (click)="saveAllSpecial()">Save All</button>
+        </div>
+    </div>
+</div>
