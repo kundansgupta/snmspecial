@@ -19,7 +19,5 @@
                {"Id":"7", "Name":"Introgation Cell", "Description":"", "RequiredSpecial":"4", "LocationIncharge":"test1","IsActive":"true","AddedDate":"2019-08-23 18:17:11","ModifiedDate":"2019-08-23 18:17:11","IsDeleted":null, "IsEdit": false, "IsNew": false },
                {"Id":"8", "Name":"Canteen", "Description":"", "RequiredSpecial":"4", "LocationIncharge":"test1","IsActive":"true","AddedDate":"2019-08-23 18:17:11","ModifiedDate":"2019-08-23 18:17:11","IsDeleted":null, "IsEdit": false, "IsNew": false },
                {"Id":"9", "Name":"Pyau", "Description":"", "RequiredSpecial":"4", "LocationIncharge":"test1","IsActive":"true","AddedDate":"2019-08-23 18:17:11","ModifiedDate":"2019-08-23 18:17:11","IsDeleted":null, "IsEdit": false, "IsNew": false },
-               {"Id":"10", "Name":"Unallocated", "Description":"", "RequiredSpecial":"0", "LocationIncharge":"test1","IsActive":"true","AddedDate":"2019-08-23 18:17:11","ModifiedDate":"2019-08-23 18:17:11","IsDeleted":null, "IsEdit": false, "IsNew": false }]  
+               {"Id":"10", "Name":"Unallocated", "Description":"", "RequiredSpecial":"0", "LocationIncharge":"test1","IsActive":"true","AddedDate":"2019-08-23 18:17:11","ModifiedDate":"2019-08-23 18:17:11","IsDeleted":null, "IsEdit": false, "IsNew": false }]    
 }
-
-
