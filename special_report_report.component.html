@@ -1,0 +1,114 @@
+<div class="col-md-12">
+    <div style="margin-top: 5px; margin-bottom: 5px;">
+        <button type="button" class="btn btn-outline-secondary" style="margin:5px;" (click)="showReportBy('s')">By Spot</button>
+        <button type="button" class="btn btn-outline-secondary" style="margin:5px;" (click)="showReportBy('a')">By Area</button>
+        <button type="button" class="btn btn-outline-secondary" style="margin:5px;" (click)="showReportBy('k')">By Kshetra</button>
+    </div>
+    <div class="bd-callout bd-callout-info">
+        Report By {{reportName}}
+    </div>
+
+<!--by spot-->
+{{rowSpotArr}}
+    <div *ngIf="reportName =='Spot'" class="row">
+        <div class="col-md-6" *ngFor="let spot of specialmaster.sewalocation; let i = index">
+            <div class="spl-card">
+                <div class="spl-card-header">
+                    <div class="spl-card-header-title">
+                        <span matBadge="{{spot.RequiredSpecial}}" matBadgeOverlap="false" matBadgeColor="accent" matBadgeSize="large">{{spot.Name}}</span>
+                        <!--<span matBadge="{{rowSpotArr[spot.Name]}}" matBadgeOverlap="false">{{spot.Name}}</span>-->
+                    </div>                    
+                </div>
+                <div class="spl-card-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Area</th>
+                                <th scope="col">Kshetra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr *ngFor="let spl of specialmaster.getspecial | filter : {field: 'SewaLocation', value: spot.Name}; let i = index">-->
+                            <tr *ngFor="let spl of specialmaster.getspecial | filterBy : ['SewaLocation']: spot.Name; let i = index; let last = last">
+                                <th scope="row">{{i+1}} {{updateRowNumber(i, spot.Name, last)}}</th>
+                                <td>{{spl.Name}}</td>
+                                <td>{{spl.Contact1}}</td>
+                                <td>{{spl.Area}}</td>
+                                <td>{{spl.Kshetra}}</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--by Area-->
+    <div *ngIf="reportName =='Area'" class="row">
+        <div class="col-md-6" *ngFor="let area of specialmaster.getspecial | unique: 'Area'; let i = index">
+            <div class="spl-card">
+                <div class="spl-card-header">
+                    <div class="spl-card-header-title">{{area.Area}}</div>
+                </div>
+                <div class="spl-card-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Spot</th>
+                                <th scope="col">Kshetra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let spl of specialmaster.getspecial | filterBy : ['Area'] : area.Area; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{spl.Name}}</td>
+                                <td>{{spl.Contact1}}</td>
+                                <td>{{spl.SewaLocation}}</td>
+                                <td>{{spl.Kshetra}}</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--by Kshetra-->
+    <div *ngIf="reportName =='Kshetra'" class="row">
+        <div class="col-md-6" *ngFor="let ksh of specialmaster.getspecial | unique: 'Kshetra'; let i = index">
+            <div class="spl-card">
+                <div class="spl-card-header">
+                    <div class="spl-card-header-title">{{ksh.Kshetra}}</div>
+                </div>
+                <div class="spl-card-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Spot</th>
+                                <th scope="col">Area</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let spl of specialmaster.getspecial | filterBy : ['Kshetra']: ksh.Kshetra; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{spl.Name}}</td>
+                                <td>{{spl.Contact1}}</td>
+                                <td>{{spl.SewaLocation}}</td>
+                                <td>{{spl.Area}}</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
