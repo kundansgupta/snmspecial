@@ -1,0 +1,133 @@
+<div class="container">
+    <h3 mat-dialog-title>Update special details</h3>
+
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.Name" name="name" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Age" [(ngModel)]="data.Age" name="age" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-radio-group  color="primary" aria-label="Gender">
+                <mat-radio-button (click)="setGender('M')" [checked]="data.Gender == 'M'" value="M">Male</mat-radio-button>
+                <mat-radio-button (click)="setGender('F')" [checked]="data.Gender == 'F'" value="F">Female</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Area" [(ngModel)]="data.Area" name="area" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Primary Contact" [(ngModel)]="data.Contact1" name="contact1" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Secondary Contact" [(ngModel)]="data.Contact2" name="contact2">
+                <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Personal Number" [(ngModel)]="data.PersonalNumber" name="personalNumber">
+                <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Unit Number" [(ngModel)]="data.UnitNo" name="unitNo" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Sector" [(ngModel)]="data.Sector" name="sector">
+                <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Kshetra" [(ngModel)]="data.Kshetra" name="kshetra" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form" color="primary">
+            <span class="custom-label">Attendance </span> <mat-slide-toggle color="primary"
+                [checked]="data.Attendance === 'P' ? true : false"
+                (change)="setAttendance($event)">
+            </mat-slide-toggle>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Select an Spot</mat-label>
+                <mat-select [(value)]="data.SewaLocation">
+                    <mat-option *ngFor="let spot of spotList" [value]="spot.Name">{{spot.Name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!--<span (click)="showSewaLocation($event)" id="sewaLocation" class="custom-label" style="padding: 10px 0 10px 0;" [ngClass]="{'hidesewalocation': isShowSewaLocation, 'showsewalocation': !isShowSewaLocation}"><b>Spot</b> {{data.SewaLocation}}</span>
+            <mat-form-field class="example-full-width" [ngClass]="{'hidesewalocation': !isShowSewaLocation, 'showsewalocation': isShowSewaLocation}">
+                <input type="text" aria-label="Number" placeholder="Select spot" name="spot" matInput [formControl]="sewaLocation" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)='setSewaLocation($event.option.value)'>
+                    <mat-option *ngFor="let spot of spotList" [value]="spot.Name">
+                        {{spot.Name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>-->
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Sewadal Status" [(ngModel)]="data.Status" name="status">
+                <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
+            </mat-form-field>
+        </div>
+        <div class="form" color="primary">
+            <span class="custom-label">Is Registered </span> <mat-slide-toggle color="primary"
+                [checked]="data.IsRegistered === 'Yes' ? true : false"
+                (change)="setIsRegistered($event)">
+            </mat-slide-toggle>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Available on" [(ngModel)]="data.AvailableOn" name="availableOn" required>
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #input class="form-control" placeholder="Pass Number" [(ngModel)]="data.PassNumber" name="passNumber" required>
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <!--Contains mat-hint for characters count and has maxLengt set-->
+        <!-- <div class="form">
+            <mat-form-field color="primary">
+                <input matInput #inputstate class="form-control" placeholder="State" [(ngModel)]="data.state" name="state" maxlength="10" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="primary">
+            <input matInput placeholder="Url" [(ngModel)]="data.url" name="url">
+            </mat-form-field>
+        </div> -->
+
+        <div mat-dialog-actions>
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="saveSpecial()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        </div>
+    </form>
+</div>
