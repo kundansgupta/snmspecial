@@ -1,0 +1,35 @@
+Option	- Options to search by Name, Area, Sewa location
+	
+Search box	- Type name or area it will fetch data and show in dropdown
+	            Select data from that dropdown and it will show all related data in grid
+	
+Grid	- From grid one can mark attendance and assign sewa
+	
+Edit 	- On click of edit in grid it will show form in place and one can edit and save details
+	
+Add	- On click of add it will show new entry window and allow user to enter details
+	
+Delete	- It will inactive users details in DB
+	
+Reports	- Area wise : saints count
+	        Sewa location wise : saints count
+	
+https://medium.com/ramsatt/angular-7-crud-part-1-project-creation-and-theme-integration-1f004dd09949	
+	
+https://ramsatt.com/2019/04/08/angular-7-crud%e2%80%8a-%e2%80%8apart-2%e2%80%8a-%e2%80%8aweb-api-preparation/	
+	
+https://www.techiediaries.com/php-angular/	
+	
+https://github.com/only2dhir/angular7-crud-example	
+	
+https://github.com/marinantonio/angular-mat-table-crud/blob/master/src/app/app.component.html	
+https://marinantonio.github.io/angular-mat-table-crud/	
+	
+https://www.c-sharpcorner.com/article/introduction-to-react-js/	
+https://www.c-sharpcorner.com/article/learn-angular-8-step-by-step-in-10-days-day-1/	
+	
+https://one.dev1.ui.westpac.com.au/react/gel/docs/0.70.2/index.html?knob-Theme=ThemeWBC&selectedKind=Overlays&selectedStory=Popover&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel 	
+	
+https://appdividend.com/2018/12/14/angular-7-routing-and-sub-routing-tutorial-with-example/	
+	
+npm i ngx-image-compress	
